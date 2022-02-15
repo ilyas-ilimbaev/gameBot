@@ -1,6 +1,6 @@
 'use strict';
 
-let number = 42;
+let number = 32;
 let sayNumber;
 let numberAttempts;
 let question;
