@@ -5,9 +5,6 @@ let sayNumber;
 let numberAttempts;
 let question;
 
-const isNumber = function (num) {
-    return !isNaN(parseFloat(num) && isFinite(num));
-};
 const gameBot = function (number) {
     sayNumber = prompt("Угадай число от 1 до 100");
     numberAttempts = 10;
