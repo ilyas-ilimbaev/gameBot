@@ -14,10 +14,12 @@ const getRandomNum = (max) => {
 };
 
 const gameBot = function (number) {
+
     number = getRandomNum(101);
+    console.log(number);
     sayNumber = prompt("Угадай число от 1 до 100");
     numberAttempts = 10;
-    
+
     const game = function () {
         if (sayNumber == number) {
             question = confirm("Поздравляю, Вы угадали!!! Хотите сыграть ещё раз?");
@@ -28,14 +30,24 @@ const gameBot = function (number) {
             }
         } else if (sayNumber > number) {
             if(numberAttempts <= 1) {
-                alert('Игра окончена');
+                question = confirm('Попытки закончились, хотите сыграть еще?');
+                if (question == true) {
+                    gameBot();
+                } else {
+                    return false;
+                }
             } else {
                 sayNumber = prompt(`Загаданное число меньше, осталось попыток ${numberAttempts = --numberAttempts}`);
                 game();
             }
         } else if (sayNumber > 0 && sayNumber < number) {
             if(numberAttempts <= 1) {
-                alert('Игра окончена');
+                question = confirm('Попытки закончились, хотите сыграть еще?');              
+                if (question == true) {
+                    gameBot();
+                } else {
+                    return false;
+                }
             } else {
                 sayNumber = prompt(`Загаданное число больше, осталось попыток ${numberAttempts = --numberAttempts}`);
                 game();
