@@ -1,17 +1,31 @@
 'use strict';
 
-let number = 32;
+let number;
 let sayNumber;
 let numberAttempts;
 let question;
 
+const isNumber = function (num) {
+    return !isNaN(parseFloat(num) && isFinite(num));
+};
+
+const getRandomNum = (max) => {
+    return Math.floor(Math.random() * max);
+};
+
 const gameBot = function (number) {
+    number = getRandomNum(101);
     sayNumber = prompt("Угадай число от 1 до 100");
     numberAttempts = 10;
-
+    
     const game = function () {
         if (sayNumber == number) {
-            question = alert("Поздравляю, Вы угадали!!!");
+            question = confirm("Поздравляю, Вы угадали!!! Хотите сыграть ещё раз?");
+            if (question == true) {
+                gameBot();
+            } else {
+                return false;
+            }
         } else if (sayNumber > number) {
             if(numberAttempts <= 1) {
                 alert('Игра окончена');
@@ -29,7 +43,7 @@ const gameBot = function (number) {
         } else if(sayNumber === null) {
             alert('Игра окончена');
         } else if(isNumber(sayNumber) == false || sayNumber == 0) {
-            console.log(numberAttempts);
+            console.log('Введено не число!');
             sayNumber = prompt("Введи число!");
             sayNumber = +sayNumber;
             game();
